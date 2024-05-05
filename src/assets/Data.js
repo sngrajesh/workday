@@ -6,7 +6,7 @@ import {
   ThumbsUpIcon,
   TaskIcon,
   ShareIcon, 
-} from "./icons";
+} from "./Icons";
 
 export const navbarLinks = {
   job: {
@@ -16,22 +16,22 @@ export const navbarLinks = {
       {
         title: "My applied jobs",
         path: "/jobs",
-        icon: <UserIcon />,
+        icon: UserIcon ,
       },
       {
         title: "Search jobs",
         path: "/jobs",
-        icon: <SearchIcon />,
+        icon: SearchIcon ,
       },
       {
         title: "Search salary",
         path: "/jobs",
-        icon: <CurrencyIocnINR />,
+        icon: CurrencyIocnINR ,
       },
       {
         title: "Ask for referral",
         path: "/jobs",
-        icon: <UserPlusIcon />,
+        icon: UserPlusIcon ,
       },
     ],
   },
@@ -43,17 +43,17 @@ export const navbarLinks = {
       {
         title: "Recommend from shortlist",
         path: "/jobs",
-        icon: <ThumbsUpIcon />,
+        icon: ThumbsUpIcon ,
       },
       {
         title: "Recommend to specific company",
         path: "/jobs",
-        icon: <TaskIcon />,
+        icon: TaskIcon ,
       },
       {
         title: "Refer this extension",
         path: "/jobs",
-        icon: <ShareIcon />,
+        icon: ShareIcon ,
       },
     ],
   },

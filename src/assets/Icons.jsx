@@ -1,4 +1,8 @@
-const UserIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
+export const UserIcon = ({
+  size = 24,
+  color = "none",
+  fill = "currentColor",
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +18,11 @@ const UserIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
   );
 };
 
-const SearchIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
+export const SearchIcon = ({
+  size = 24,
+  color = "none",
+  fill = "currentColor",
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +38,7 @@ const SearchIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
   );
 };
 
-const CurrencyIocnINR = ({
+export const CurrencyIocnINR = ({
   size = 24,
   color = "none",
   fill = "currentColor",
@@ -50,7 +58,11 @@ const CurrencyIocnINR = ({
   );
 };
 
-const UserPlusIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
+export const UserPlusIcon = ({
+  size = 24,
+  color = "none",
+  fill = "currentColor",
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +78,11 @@ const UserPlusIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
   );
 };
 
-const ThumbsUpIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
+export const ThumbsUpIcon = ({
+  size = 24,
+  color = "none",
+  fill = "currentColor",
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +98,11 @@ const ThumbsUpIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
   );
 };
 
-const TaskIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
+export const TaskIcon = ({
+  size = 24,
+  color = "none",
+  fill = "currentColor",
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +118,11 @@ const TaskIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
   );
 };
 
-const ShareIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
+export const ShareIcon = ({
+  size = 24,
+  color = "none",
+  fill = "currentColor",
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +138,7 @@ const ShareIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
   );
 };
 
-const LeftArrowIcon = ({
+export const LeftArrowIcon = ({
   size = 24,
   color = "none",
   fill = "currentColor",
@@ -137,7 +161,11 @@ const LeftArrowIcon = ({
   );
 };
 
-const CrossIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
+export const CrossIcon = ({
+  size = 24,
+  color = "none",
+  fill = "currentColor",
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -153,14 +181,22 @@ const CrossIcon = ({ size = 24, color = "none", fill = "currentColor" }) => {
   );
 };
 
-export {
-  UserIcon,
-  SearchIcon,
-  CurrencyIocnINR,
-  UserPlusIcon,
-  ThumbsUpIcon,
-  TaskIcon,
-  ShareIcon,
-  LeftArrowIcon,
-  CrossIcon,
+export const ChatIcons = ({
+  size = 24,
+  color = "none",
+  fill = "currentColor",
+}) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 256 256"
+    >
+      <path
+        fill={fill}
+        d="M232 124a100.11 100.11 0 0 1-100 100H48a16 16 0 0 1-16-16v-84a100 100 0 0 1 200 0"
+      ></path>
+    </svg>
+  );
 };
