@@ -55,7 +55,31 @@
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
+  position: relative;
 }
+
+.sidebar-main-links ul li[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  padding: 5px 10px;
+  background: rgba(49, 49, 49, 0.813);
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  display: none;
+  transition: all 0.8s;
+  opacity: 0;
+}
+.sidebar-main-links ul li[data-tooltip]:hover::before {
+  display: block;
+  opacity: 1;
+}
+
 .sidebar-main-links ul li a {
   color: black !important;
 }
