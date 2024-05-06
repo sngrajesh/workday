@@ -21,14 +21,20 @@ const Card = ({
           <div className="applicants">10 Applicants</div>
         </div>
         <div className="job-company-detail">
-          <img className="company-logo" src={logoUrl} alt="company-logo" />
+          {logoUrl ? (
+            <img className="company-logo" src={logoUrl} alt="company-logo" />
+          ) : (
+            <div className="company-logo">
+              {companyName?.split(" ").map((word) => word[0].toUpperCase())}
+            </div>
+          )}
           <div className="job-company-detail-innder-wrapper">
             <div className="company-name">{companyName}</div>
             <div className="job-role">{jobRole}</div>
             <div className="job-location">{location}</div>
           </div>
         </div>
-        <div className="job-salary">{`Estimated Salary:  ${salaryCurrencyCode}${minJdSalary} - ${maxJdSalary}LPA`}</div>
+        <div className="job-salary">{`Estimated Salary:  ${salaryCurrencyCode} ${minJdSalary} - ${maxJdSalary} LPA`}</div>
         <div className="companydetai-jobdetail">
           <h3>About Company: </h3>
           <p className="job-detail-paragrahp">
@@ -56,8 +62,19 @@ const Card = ({
             <span>{`${minExp} years`}</span>
           </div>
           <div className="apply-links">
-            <button>⚡ Easy Apply</button>
-            <button className="ask-for-referral-button">
+            {jdLink ? (
+              <a
+                href={jdLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="apply-links-button"
+              >
+                Easy Apply
+              </a>
+            ) : (
+              <button className="apply-links-button">⚡ Easy Apply</button>
+            )}
+            <button className="apply-links-button ask-for-referral-button">
               <img
                 src="https://media.licdn.com/dms/image/C5103AQHVt2mE6FxV8Q/profile-displayphoto-shrink_800_800/0/1534593555331?e=1717632000&v=beta&t=4it3udzASl4VF4xaqVNLIeuov1xNZK5binLTShSqA1s"
                 alt=""

@@ -23,6 +23,11 @@
   max-width: 360px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 0px !important;
   max-height: 78vh;
+  transition: transform 0.3s;
+}
+
+.job-detail:hover {
+  transform: scale(1.01);
 }
 
 .posted-date-applicants {
@@ -149,8 +154,9 @@
   width: 100%;
 }
 
-.apply-links button {
-  /* removing default atules */
+.apply-links-button {
+  /* removing default unset */
+  text-decoration: unset;
   border: none;
   user-select: none;
   cursor: pointer;
