@@ -1,4 +1,6 @@
+import { useState } from "react";
 import Card from "../../components/card/Card";
+import { Select } from "../../components/selectMenu/Select";
 import "./HomePage.css";
 const HomePage = () => {
   const JobData = {
@@ -157,8 +159,35 @@ const HomePage = () => {
     totalCount: 947,
   };
 
+  const options = [
+    { label: "First", value: 1 },
+    { label: "Second", value: 2 },
+    { label: "Third", value: 3 },
+    { label: "Fourth", value: 4 },
+    { label: "Fifth", value: 5 },
+  ];
+
+  const [value1, setValue1] = useState([options[0]]);
+  const [value2, setValue2] = useState(options[0]);
+
   return (
     <div className="home-page">
+      <div className="fileter">
+        <Select
+          multiple
+          options={options}
+          value={value1}
+          onChange={(o) => setValue1(o)}
+        />
+        <br />
+        <Select
+          options={options}
+          value={value2}
+          width="200px"
+          onChange={(o) => setValue2(o)}
+        />
+      </div>
+
       <div className="home-page-content">
         {JobData.jdList.map((job, index) => {
           return (

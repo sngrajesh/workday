@@ -17,3 +17,13 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+
+.fileter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+  gap: 3px;
+  margin-top: 20px;
+}

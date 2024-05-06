@@ -1,0 +1,123 @@
+.select-container {
+  position: relative;
+  width: 20em;
+  min-height: 1.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.4em;
+  border-radius: 0.25em;
+  outline: none;
+  border: 1.5px solid #777;
+}
+
+.select-container:focus {
+  border-color: hsl(200, 100%, 50%);
+  outline: 2px solid hsl(200, 100%, 50%);
+}
+
+.select-value {
+  flex-grow: 1;
+  display: flex;
+  gap: 0.4em;
+  flex-wrap: wrap;
+  font-weight: 300 !important;
+}
+
+.select-clear-btn {
+  background: none;
+  color: #777;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.25em;
+}
+
+.select-clear-btn:focus,
+.select-clear-btn:hover {
+  color: #333;
+}
+
+.select-divider {
+  background-color: #777;
+  align-self: stretch;
+  width: 0.05em;
+}
+
+.select-caret svg {
+  transform: rotate(-90deg);
+}
+
+.select-options {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+  max-height: 15em;
+  overflow-y: auto;
+  border: 0.05em solid #777;
+  border-radius: 0.25em;
+  width: 100%;
+  left: 0;
+  top: calc(100% + 0.25em);
+  background-color: white;
+  z-index: 100;
+}
+
+.select-options.select-show {
+  display: block;
+}
+
+.select-option {
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  font-weight: 300 !important;
+}
+
+
+.select-option.select-highlighted {
+  background-color: hsla(200, 100%, 86%, 0.631);
+}
+
+.select-option.select-selected {
+  background-color: hsl(200, 100%, 50%) !important;
+}
+
+.select-option-badge {
+  display: flex;
+  align-items: center;
+  background-color:  #7777773d !important;
+  border-radius: 0.25em;
+  padding:  0 0 0 0.4em ;
+  gap: 0.25em;
+  font-size: 12px;
+  font-weight: 300;
+  cursor: pointer;
+  background: none;
+  outline: none; 
+}
+
+.select-option-badge:hover,
+.select-option-badge:focus {
+  border-color: hsl(0, 100%, 50%);
+}
+
+.select-option-badge:hover > .select-remove-btn,
+.select-option-badge:focus > .select-remove-btn {
+  background-color: hsl(0, 100%, 90%);
+  color: hsl(0, 100%, 50%);
+}
+
+.select-option-badge > .select-remove-btn {
+  border: none;
+  background: none;
+  font-size: 1.25em;
+  color: black;
+  height: 100%;
+  padding-inline: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+}
