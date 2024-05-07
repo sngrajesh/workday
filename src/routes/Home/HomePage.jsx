@@ -9,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 import { SpinnerIcon } from "../../assets/Icons";
 import CardSkeleton from "../../components/card/skeleton/cardSkeleton";
 import { selectOptions } from "../../assets/Data";
+import CardOverlay from "../../components/cardOverlay/CardOverlay";
 
 const HomePage = () => {
   const jobDetails = useSelector((state) => state.JOBReducer);
@@ -46,6 +47,11 @@ const HomePage = () => {
   //Input
   const [location, setLocation] = useState("");
   const [companyName, setCompanyName] = useState("");
+  //Overlay
+  const [overlay, setOverlay] = useState({
+    visible: false,
+    jobDetailsFromCompany: "",
+  });
 
   return (
     <div className="home-page">
@@ -66,11 +72,13 @@ const HomePage = () => {
           onChange={(e) => setLocation(e.target.value)}
         />
       </div>
+      <CardOverlay overlay={overlay} setOverlay={setOverlay} />
 
       <div className="home-page-content">
         {jobDetails.jobs.map((job, index) => {
           return (
             <Card
+              //Data
               key={index}
               companyName={job.companyName}
               jobRole={job.jobRole}
@@ -83,6 +91,8 @@ const HomePage = () => {
               logoUrl={job.logoUrl}
               jobDetailsFromCompany={job.jobDetailsFromCompany}
               jdLink={job.jdLink}
+              //Overlay Content
+              setOverlay={setOverlay}
             />
           );
         })}
@@ -90,6 +100,7 @@ const HomePage = () => {
           ? [1, 2, 3, 4].map((item, index) => <CardSkeleton key={index} />)
           : null}
       </div>
+
 
       <div className="loading-spinner" ref={ref}>
         {inViewVisible ? <SpinnerIcon /> : <span>That All</span>}

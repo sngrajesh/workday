@@ -12,6 +12,7 @@ const Card = ({
   logoUrl,
   jobDetailsFromCompany,
   jdLink,
+  setOverlay,
 }) => {
   return (
     <div className="job-wrapper">
@@ -49,7 +50,17 @@ const Card = ({
           <p className="job-detail-paragrahp">{jobDetailsFromCompany}</p>
         </div>
         <div className="bottom-overlay-content">
-          <button className="view-job-button">View Job</button>
+          <button
+            onClick={() => {
+              setOverlay({
+                visible: true,
+                jobDetailsFromCompany,
+              });
+            }}
+            className="view-job-button"
+          >
+            View Job
+          </button>
 
           <div
             style={{
