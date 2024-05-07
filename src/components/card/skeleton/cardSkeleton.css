@@ -1,9 +1,10 @@
-.job-wrapper {
+.skeleton-job-wrapper {
   width: 33%;
   padding: 1%;
+  height: 80vh;
 }
 
-.job-detail {
+.skeleton-job-detail {
   position: relative;
   display: flex;
   margin-inline: auto;
@@ -26,19 +27,19 @@
   transition: transform 0.3s;
 }
 
-.job-detail:hover {
+.skeleton-job-detail:hover {
   transform: scale(1.01);
 }
 
-.posted-date-applicants {
+.skeleton-posted-date-applicants {
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 7px;
   margin-bottom: 15px;
 }
-.posted-date,
-.applicants {
+.skeleton-posted-date,
+.skeleton-applicants {
   padding: 4px 6px;
   box-shadow: rgba(6, 6, 6, 0.05) 0px 2px 6px 0px;
   border-radius: 10px;
@@ -46,84 +47,77 @@
   margin: 0px;
   font-weight: 400;
   line-height: 1.5;
-  font-size: 9px;
+  height: 17px;
+  width: 30%;
 }
 
-.job-company-detail {
+.skeleton-job-company-detail {
   display: flex;
   align-items: start;
   justify-content: start;
   height: max-content;
   gap: 10px;
 }
-.job-company-detail-innder-wrapper {
+.skeleton-job-company-detail-innder-wrapper {
   display: flex;
   align-items: start;
   flex-direction: column;
   justify-content: start;
+  width: 100%;
+  height: max-content;
 }
 
-.company-logo {
+.skeleton-company-logo {
   width: 35px;
   aspect-ratio: 1/1;
   border-radius: 2px;
   overflow: hidden;
 }
 
-.company-name {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1px;
+.skeleton-company-name {
+  min-height: 20px;
+  min-width: 35%;
   margin-bottom: 5px;
-  color: #8b8b8b;
-  white-space: nowrap;
 }
 
-.job-role {
-  font-size: 14px;
-  line-height: 1.5;
-  white-space: nowrap;
-  text-transform: capitalize;
+.skeleton-job-role {
+  height: 14px;
+  width: 50%;
 }
 
-.job-location {
-  font-size: 11px;
-  font-weight: 500;
+.skeleton-job-location {
   margin-top: 5px;
-  white-space: nowrap;
+  height: 11px;
+  width: 30%;
 }
 
-.job-salary {
-  font-size: 14px !important;
-  margin: 8px 0 !important;
-  color: rgb(77, 89, 106);
-  line-height: 1.43;
-  font-weight: 300;
+.skeleton-job-salary {
+  margin: 8px 0;
+  height: 14px;
+  width: 70%;
 }
 
-.companydetai-jobdetail {
-  text-decoration: ellipsis;
+.skeleton-companydetai-jobdetail {
   line-clamp: 10;
   flex: 1;
   overflow: hidden;
+  width: 100%;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
-.companydetai-jobdetail h3 {
+.skeleton-job-detail-h3 {
   margin: 0px;
-  font-size: 1rem;
-  line-height: 1.5;
-  font-weight: 500;
+  min-height: 20px;
+  width: 50%;
 }
 
-.job-detail-paragrahp {
-  line-height: 1.5;
-  font-weight: 400;
-  white-space: pre-wrap;
-  font-size: 14px;
-  color: #000000de;
+.skeleton-job-detail-paragrahp {
+  height: 14px;
 }
 
-.bottom-overlay-content {
+.skeleton-bottom-overlay-content {
   position: absolute;
   left: 0%;
   right: 0%;
@@ -145,7 +139,7 @@
   );
 }
 
-.apply-links {
+.skeleton-apply-links {
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -154,7 +148,7 @@
   width: 100%;
 }
 
-.apply-links-button {
+.skeleton-apply-links-button {
   /* removing default unset */
   text-decoration: unset;
   border: none;
@@ -179,7 +173,7 @@
   font-weight: 600;
 }
 
-.view-job-button {
+.skeleton-view-job-button {
   width: 100%;
   border: none;
   user-select: none;
@@ -196,34 +190,33 @@
   margin-bottom: 20px;
 }
 
-.experience-required {
+.skeleton-experience-required {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   margin-bottom: 15px;
 }
 
-.experience-required h4 {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1px;
+.skeleton-experience-h4 {
+  height: 13px;
+  width: 50%;
   margin-bottom: 3px;
-  color: #8b8b8b;
   margin-top: 10px;
 }
 
-.experience-required span {
-  font-size: 14px;
-  line-height: 1.5;
+.skeleton-experience-span {
+  height: 15px;
+  width: 35%;
 }
 
-.ask-for-referral-button {
+.skeleton-ask-for-referral-button {
   background-color: #1a73e8 !important;
   color: #fff !important;
   font-weight: 400 !important;
 }
-.ask-for-referral-button img {
+.skeleton-ask-for-referral-button img {
   position: relative;
   width: 25px;
   border: 2px solid #fff;
@@ -233,13 +226,30 @@
   filter: blur(1px) !important;
 }
 
-@media screen and (max-width: 996px) {
-  .job-wrapper {
-    width: 50%; 
-  }
+.animate-skeleton {
+  background: rgba(130, 130, 130, 0.2);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(8%, rgba(130, 130, 130, 0.2)),
+    color-stop(18%, rgba(130, 130, 130, 0.3)),
+    color-stop(33%, rgba(130, 130, 130, 0.2))
+  );
+  background: linear-gradient(
+    to right,
+    rgba(130, 130, 130, 0.2) 8%,
+    rgba(130, 130, 130, 0.3) 18%,
+    rgba(130, 130, 130, 0.2) 33%
+  );
+  background-size: 800px 100px;
+  animation: wave-lines 2s infinite ease-out;
 }
-@media screen and (max-width: 480px) {
-  .job-wrapper {
-    width: 100%;
+@keyframes wave-lines {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
   }
 }

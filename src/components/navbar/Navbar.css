@@ -38,3 +38,9 @@
   background-color: #55efc4;
   transform: scaleX(-1);
 }
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: var(--paddingY) 20px var(--paddingY) 20px;
+  }
+}

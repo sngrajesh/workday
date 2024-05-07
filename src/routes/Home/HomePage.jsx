@@ -1,195 +1,74 @@
-import { useState } from "react";
+import "./HomePage.css";
+import { useEffect, useState } from "react";
 import Card from "../../components/card/Card";
 import { Select } from "../../components/selectMenu/Select";
-import "./HomePage.css";
+import { fetchJobs } from "../../utils/fetchJobs";
+import { useDispatch, useSelector } from "react-redux";
+import { setJobs } from "../../store/actions/jobAction";
+import { useInView } from "react-intersection-observer";
+import { SpinnerIcon } from "../../assets/Icons";
+import CardSkeleton from "../../components/card/skeleton/cardSkeleton";
+import { selectOptions } from "../../assets/Data";
+
 const HomePage = () => {
-  const JobData = {
-    jdList: [
-      {
-        jdUid: "cfff35ba-053c-11ef-83d3-06301d0a7178-92012",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 103,
-        minJdSalary: 100,
-        salaryCurrencyCode: "USD",
-        location: "mumbai",
-        minExp: null,
-        maxExp: null,
-        jobRole: "ios",
-        companyName: "LG",
-        logoUrl: "https://logo.clearbit.com/lg.com",
-      },
-      {
-        jdUid: "cfff35d4-053c-11ef-83d3-06301d0a7178-92016",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 28,
-        minJdSalary: 26,
-        salaryCurrencyCode: "USD",
-        location: "remote",
-        minExp: 2,
-        maxExp: 11,
-        jobRole: "android",
-        companyName: "Sony",
-        logoUrl: "https://logo.clearbit.com/sony.com",
-      },
-      {
-        jdUid: "cfff35e1-053c-11ef-83d3-06301d0a7178-92018",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 45,
-        minJdSalary: 35,
-        salaryCurrencyCode: "USD",
-        location: "chennai",
-        minExp: 5,
-        maxExp: 6,
-        jobRole: "tech lead",
-        companyName: "Adobe Systems",
-        logoUrl: "https://logo.clearbit.com/adobe.com",
-      },
-      {
-        jdUid: "cfff35ed-053c-11ef-83d3-06301d0a7178-92020",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 48,
-        minJdSalary: 26,
-        salaryCurrencyCode: "USD",
-        location: "delhi ncr",
-        minExp: 1,
-        maxExp: 8,
-        jobRole: "frontend",
-        companyName: "HP",
-        logoUrl: "https://logo.clearbit.com/hp.com",
-      },
-      {
-        jdUid: "cfff35fb-053c-11ef-83d3-06301d0a7178-92022",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 19,
-        minJdSalary: 15,
-        salaryCurrencyCode: "USD",
-        location: "mumbai",
-        minExp: 8,
-        maxExp: 9,
-        jobRole: "ios",
-        companyName: "eBay",
-        logoUrl: "https://logo.clearbit.com/ebay.com",
-      },
-      {
-        jdUid: "cfff3608-053c-11ef-83d3-06301d0a7178-92024",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 78,
-        minJdSalary: 64,
-        salaryCurrencyCode: "USD",
-        location: "bangalore",
-        minExp: 7,
-        maxExp: 15,
-        jobRole: "backend",
-        companyName: "Tencent",
-        logoUrl: "https://logo.clearbit.com/tencent.com",
-      },
-      {
-        jdUid: "cfff3614-053c-11ef-83d3-06301d0a7178-92026",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 5,
-        minJdSalary: 3,
-        salaryCurrencyCode: "USD",
-        location: "remote",
-        minExp: 3,
-        maxExp: 12,
-        jobRole: "android",
-        companyName: "Apple",
-        logoUrl: "https://logo.clearbit.com/apple.com",
-      },
-      {
-        jdUid: "cfff3621-053c-11ef-83d3-06301d0a7178-92028",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 33,
-        minJdSalary: 23,
-        salaryCurrencyCode: "USD",
-        location: "chennai",
-        minExp: 1,
-        maxExp: 5,
-        jobRole: "tech lead",
-        companyName: "Asus",
-        logoUrl: "https://logo.clearbit.com/asus.com",
-      },
-      {
-        jdUid: "cfff362e-053c-11ef-83d3-06301d0a7178-92030",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 83,
-        minJdSalary: 61,
-        salaryCurrencyCode: "USD",
-        location: "delhi ncr",
-        minExp: 6,
-        maxExp: 11,
-        jobRole: "frontend",
-        companyName: "Intel Corporation",
-        logoUrl: "https://logo.clearbit.com/intel.com",
-      },
-      {
-        jdUid: "cfff363b-053c-11ef-83d3-06301d0a7178-92032",
-        jdLink: "https://weekday.works",
-        jobDetailsFromCompany:
-          "This is a sample job and you must have displayed it to understand that its not just some random lorem ipsum text but something which was manually written. Oh well, if random text is what you were looking for then here it is: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and now in this assignment.",
-        maxJdSalary: 103,
-        minJdSalary: 86,
-        salaryCurrencyCode: "USD",
-        location: "mumbai",
-        minExp: 10,
-        maxExp: 15,
-        jobRole: "ios",
-        companyName: "Rakuten",
-        logoUrl: "https://logo.clearbit.com/rakuten.com",
-      },
-    ],
-    totalCount: 947,
+  const jobDetails = useSelector((state) => state.JOBReducer);
+  const dispatch = useDispatch();
+  const [inViewVisible, setInViewVisible] = useState(true);
+  const { ref, inView } = useInView();
+
+  const getJobs = async (page = 0) => {
+    try {
+      const response = await fetchJobs(jobDetails.limit, page);
+      dispatch(setJobs(response.jdList, response.totalCount));
+    } catch (error) {
+      console.error(error);
+    }
+    console.log(jobDetails);
   };
 
-  const options = [
-    { label: "First", value: 1 },
-    { label: "Second", value: 2 },
-    { label: "Third", value: 3 },
-    { label: "Fourth", value: 4 },
-    { label: "Fifth", value: 5 },
-  ];
+  useEffect(() => {
+    if (inView) {
+      setInViewVisible(true);
+      getJobs(jobDetails.page + 1);
+    }
+  }, [inView]);
 
-  const [value1, setValue1] = useState([options[0]]);
-  const [value2, setValue2] = useState(options[0]);
+  useEffect(() => {
+    getJobs(0);
+  }, []);
+
+  //Select
+  const [minExp, setMinExp] = useState(0);
+  const [remote, setRemote] = useState("");
+  const [techStack, setTechStack] = useState("");
+  const [role, setRole] = useState("");
+  const [minBasePay, setMinBasePay] = useState("");
+  //Input
+  const [location, setLocation] = useState("");
+  const [companyName, setCompanyName] = useState("");
 
   return (
     <div className="home-page">
       <div className="fileter">
-        <Select
-          multiple
-          options={options}
-          value={value1}
-          onChange={(o) => setValue1(o)}
+        <SelectSection />
+        <input
+          type="text"
+          placeholder="Company Name"
+          value={companyName}
+          className="fileter-input"
+          onChange={(e) => setCompanyName(e.target.value)}
         />
-        <br />
-        <Select
-          options={options}
-          value={value2}
-          width="200px"
-          onChange={(o) => setValue2(o)}
+        <input
+          type="text"
+          placeholder="Location"
+          value={location}
+          className="fileter-input"
+          onChange={(e) => setLocation(e.target.value)}
         />
       </div>
 
       <div className="home-page-content">
-        {JobData.jdList.map((job, index) => {
+        {jobDetails.jobs.map((job, index) => {
           return (
             <Card
               key={index}
@@ -207,8 +86,46 @@ const HomePage = () => {
             />
           );
         })}
+        {inViewVisible
+          ? [1, 2, 3, 4].map((item, index) => <CardSkeleton key={index} />)
+          : null}
+      </div>
+
+      <div className="loading-spinner" ref={ref}>
+        {inViewVisible ? <SpinnerIcon /> : <span>That All</span>}
       </div>
     </div>
+  );
+};
+
+const SelectSection = () => {
+  return (
+    <>
+      {selectOptions.map((option, index) => {
+        return (
+          <Select
+            key={index}
+            id={option.id}
+            title={option.title}
+            placeholder={option.placeholder}
+            options={
+              option.nested //Return the all the valuse of each clusters into one array oflabel and value
+                ? option.options.flatMap((option, index) => {
+                    return option.clusters.map((cluster, index) => ({
+                      label: cluster,
+                      value: cluster,
+                    }));
+                  })
+                : option.options.map((option, index) => ({
+                    label: option,
+                    value: option,
+                  }))
+            }
+            multiple={option.multiple}
+          />
+        );
+      })}
+    </>
   );
 };
 

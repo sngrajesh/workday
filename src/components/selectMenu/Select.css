@@ -1,6 +1,5 @@
 .select-container {
   position: relative;
-  width: 20em;
   min-height: 1.5em;
   display: flex;
   align-items: center;
@@ -8,7 +7,7 @@
   padding: 0.4em;
   border-radius: 0.25em;
   outline: none;
-  border: 1.5px solid #777;
+  border: 1.5px solid #7777775a;
 }
 
 .select-container:focus {
@@ -40,13 +39,17 @@
 }
 
 .select-divider {
-  background-color: #777;
+  background-color: #7777775a;
   align-self: stretch;
   width: 0.05em;
 }
 
 .select-caret svg {
+  color: #777;
   transform: rotate(-90deg);
+}
+.select-caret:hover svg {
+  color: #333;
 }
 
 .select-options {
@@ -76,7 +79,6 @@
   font-weight: 300 !important;
 }
 
-
 .select-option.select-highlighted {
   background-color: hsla(200, 100%, 86%, 0.631);
 }
@@ -88,15 +90,15 @@
 .select-option-badge {
   display: flex;
   align-items: center;
-  background-color:  #7777773d !important;
+  background-color: #7777773d !important;
   border-radius: 0.25em;
-  padding:  0 0 0 0.4em ;
+  padding: 0 0 0 0.4em;
   gap: 0.25em;
   font-size: 12px;
   font-weight: 300;
   cursor: pointer;
   background: none;
-  outline: none; 
+  outline: none;
 }
 
 .select-option-badge:hover,
@@ -119,5 +121,4 @@
   padding-inline: 4px;
   padding-top: 2px;
   padding-bottom: 2px;
-
 }

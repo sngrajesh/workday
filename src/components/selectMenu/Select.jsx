@@ -2,11 +2,10 @@ import "./Select.css";
 import { useEffect, useRef, useState } from "react";
 import { CrossIcon, LeftArrowIcon } from "../../assets/Icons";
 
-export function Select({ multiple, value, onChange, options, width = "20em" }) {
+export function Select({ id, title, multiple, value, onChange, options }) {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const containerRef = useRef(null);
-
   function clearOptions() {
     multiple ? onChange([]) : onChange(undefined);
   }
@@ -72,12 +71,12 @@ export function Select({ multiple, value, onChange, options, width = "20em" }) {
 
   return (
     <div
+      id={id}
+      tabIndex={0}
       ref={containerRef}
       onBlur={() => setIsOpen(false)}
       onClick={() => setIsOpen((prev) => !prev)}
-      tabIndex={0}
-      className={"select-container"}
-      style={{ width }}
+      className={`select-container`}
     >
       <span className={"select-value"}>
         {multiple

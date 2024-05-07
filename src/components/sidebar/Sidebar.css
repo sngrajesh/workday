@@ -95,3 +95,10 @@
 .sidebar-profile-image {
   margin-top: auto;
 }
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+    max-width: 60px;
+  }
+}
