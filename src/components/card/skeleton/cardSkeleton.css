@@ -253,3 +253,18 @@
     background-position: 468px 0;
   }
 }
+
+
+
+
+
+@media screen and (max-width: 996px) {
+  .skeleton-job-wrapper {
+    width: 50%; 
+  }
+}
+@media screen and (max-width: 480px) {
+  .skeleton-job-wrapper {
+    width: 100%;
+  }
+}

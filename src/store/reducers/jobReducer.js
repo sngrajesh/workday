@@ -1,4 +1,4 @@
-import { SET_JOBS, FILTER_CHANGE } from "./../actionTypes";
+import { SET_JOBS } from "./../actionTypes";
 
 const initialState = {
   jobs: [],

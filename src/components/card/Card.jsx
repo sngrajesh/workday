@@ -35,7 +35,9 @@ const Card = ({
             <div className="job-location">{location}</div>
           </div>
         </div>
-        <div className="job-salary">{`Estimated Salary:  ${salaryCurrencyCode} ${minJdSalary} - ${maxJdSalary} LPA`}</div>
+        <div className="job-salary">{`Estimated Salary:  ${salaryCurrencyCode} ${
+          minJdSalary ? minJdSalary + " -" : ""
+        }  ${maxJdSalary} LPA`}</div>
         <div className="companydetai-jobdetail">
           <h3>About Company: </h3>
           <p className="job-detail-paragrahp">

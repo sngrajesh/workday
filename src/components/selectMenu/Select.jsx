@@ -2,10 +2,19 @@ import "./Select.css";
 import { useEffect, useRef, useState } from "react";
 import { CrossIcon, LeftArrowIcon } from "../../assets/Icons";
 
-export function Select({ id, title, multiple, value, onChange, options }) {
+export function Select({
+  id,
+  title,
+  multiple,
+  value,
+  onChange,
+  options,
+  placeholder,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const containerRef = useRef(null);
+
   function clearOptions() {
     multiple ? onChange([]) : onChange(undefined);
   }
@@ -80,8 +89,8 @@ export function Select({ id, title, multiple, value, onChange, options }) {
     >
       <span className={"select-value"}>
         {multiple
-          ? value?.map((v) => (
-              <span key={v.value} className={"select-option-badge"}>
+          ? value?.map((v, i) => (
+              <span key={v.value + i} className={"select-option-badge"}>
                 {v.label}
                 <button
                   onClick={(e) => {
@@ -95,6 +104,11 @@ export function Select({ id, title, multiple, value, onChange, options }) {
               </span>
             ))
           : value?.label}
+        {multiple && value.length === 0 ? (
+          <span className={"select-placeholder"}>{placeholder}</span>
+        ) : (
+          !value && <span className={"select-placeholder"}>{placeholder}</span>
+        )}
       </span>
       <button
         onClick={(e) => {
@@ -118,7 +132,7 @@ export function Select({ id, title, multiple, value, onChange, options }) {
               setIsOpen(false);
             }}
             onMouseEnter={() => setHighlightedIndex(index)}
-            key={option.value}
+            key={option.value + index}
             className={`select-option ${
               isOptionSelected(option) ? "select-selected" : ""
             } ${index === highlightedIndex ? "select-highlighted" : ""}`}

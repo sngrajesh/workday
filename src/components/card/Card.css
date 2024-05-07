@@ -91,6 +91,7 @@
   font-weight: 500;
   margin-top: 5px;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 
 .job-salary {

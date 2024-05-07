@@ -25,11 +25,18 @@
   height: 80vh;
   max-height: 80vh;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: white;
   padding: 20px 20px;
   border-radius: 10px;
 }
+
+.card-overlay-content::-webkit-scrollbar-thumb {
+  border-bottom-right-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+
 
 .card-overlay-content h2 {
   font-size: 1.25rem;
@@ -48,4 +55,12 @@
   line-height: 1.5;
   font-size: 16px;
   white-space: pre-wrap;
+}
+
+
+@media screen and (max-width: 768px) {
+  .card-overlay-content {
+    width: 94%;
+  }
+  
 }

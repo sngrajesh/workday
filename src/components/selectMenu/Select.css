@@ -67,6 +67,8 @@
   top: calc(100% + 0.25em);
   background-color: white;
   z-index: 100;
+  text-transform: capitalize;
+
 }
 
 .select-options.select-show {
@@ -99,6 +101,7 @@
   cursor: pointer;
   background: none;
   outline: none;
+  text-transform: capitalize;
 }
 
 .select-option-badge:hover,
@@ -121,4 +124,11 @@
   padding-inline: 4px;
   padding-top: 2px;
   padding-bottom: 2px;
+}
+
+
+.select-placeholder{
+  color: #777;
+  font-weight: 300;
+  font-size: 14px;
 }
